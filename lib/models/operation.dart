@@ -1,8 +1,7 @@
 class Operation {
-  String organe;
-  String type;
-  int montant;
-  DateTime dateOp;
+  final String organe,type;
+  final int montant;
+  final DateTime dateOp;
 
   Operation(this.organe, this.type,  this.montant,  this.dateOp);
 }

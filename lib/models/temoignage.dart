@@ -1,5 +1,5 @@
 class Temoignage {
-  String contenu, auteur;
+  final String contenu, auteur;
 
   Temoignage(this.contenu, this.auteur);
 }

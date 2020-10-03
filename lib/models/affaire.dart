@@ -1,5 +1,5 @@
 class Affaire {
-  String title, description, image, contact;
+ final String title, description, image, contact;
 
-  Affaire(this.title, this.description, this.image);
+  Affaire(this.title, this.description, this.image, this.contact);
 }
