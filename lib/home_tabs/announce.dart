@@ -11,5 +11,6 @@ class _AnnonceState extends State<Annonce> {
     return Container(
       
     );
+    //Navigator.of(context).pushNamed(NewsDetails.routeName,arguments: snapshot.data[index]);
   }
 }
