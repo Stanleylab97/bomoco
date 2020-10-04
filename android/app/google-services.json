@@ -1,0 +1,48 @@
+{
+  "project_info": {
+    "project_number": "1045385595763",
+    "firebase_url": "https://bomoco-83047.firebaseio.com",
+    "project_id": "bomoco-83047",
+    "storage_bucket": "bomoco-83047.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:1045385595763:android:516b86413543cc1e495306",
+        "android_client_info": {
+          "package_name": "com.stanleylab97.bomoco"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "1045385595763-6guave0ohhk8l8plnpb0bsbidtrpta5r.apps.googleusercontent.com",
+          "client_type": 1,
+          "android_info": {
+            "package_name": "com.stanleylab97.bomoco",
+            "certificate_hash": "778e9aeb3ff4c6decda5db2b8de903d0003ef873"
+          }
+        },
+        {
+          "client_id": "1045385595763-9o3pnk1j6aqvaht1hgur9jaujrqe7mqn.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyDI9_ucjUtOINI2FQqyCwGyHx99EGZLEfg"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "1045385595763-9o3pnk1j6aqvaht1hgur9jaujrqe7mqn.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}

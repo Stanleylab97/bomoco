@@ -1,4 +1,4 @@
-package com.example.bomoco
+package com.stanleylab97.bomoco
 
 import io.flutter.embedding.android.FlutterActivity
 
