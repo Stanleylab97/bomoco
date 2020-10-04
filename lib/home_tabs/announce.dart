@@ -9,8 +9,8 @@ class _AnnonceState extends State<Annonce> {
   @override
   Widget build(BuildContext context) {
     return Container(
-      
+      //Navigator.of(context).pushNamed(NewsDetails.routeName,arguments: snapshot.data[index]);
     );
-    //Navigator.of(context).pushNamed(NewsDetails.routeName,arguments: snapshot.data[index]);
+    
   }
 }
