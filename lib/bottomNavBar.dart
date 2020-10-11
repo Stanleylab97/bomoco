@@ -2,6 +2,7 @@ import 'package:bomoco/BottomNavBar/account.dart';
 import 'package:bomoco/BottomNavBar/home.dart';
 import 'package:bomoco/BottomNavBar/partners.dart';
 import 'package:bomoco/models/operation.dart';
+import 'package:firebase_core/firebase_core.dart';
 import 'package:flutter/material.dart';
 
 import 'BottomNavBar/store.dart';
@@ -14,20 +15,16 @@ class Racine extends StatefulWidget {
 class _RacineState extends State<Racine> {
   int _currentIndex = 0;
   final List<Widget> _children = [HomePage(), Account(), Partners(), Store()];
-
+  
   void onTabTapped(int index) {
     setState(() {
       _currentIndex = index;
-      var x = Operation("organe", "type", 1500, DateTime(2020, 4, 11));
-      print(x.organe);
-      print(x.type);
-      print(x.montant);
-      print(x.dateOp);
     });
   }
 
   @override
   Widget build(BuildContext context) {
+    Firebase.initializeApp();
     return Scaffold(
       body: _children[_currentIndex],
       bottomNavigationBar: BottomNavigationBar(
