@@ -1,5 +1,5 @@
 import 'package:bomoco/partnership_tabs/contributeurs.dart';
-import 'package:bomoco/partnership_tabs/donations.dart';
+import 'package:bomoco/partnership_tabs/donateurs.dart';
 import 'package:bomoco/partnership_tabs/operateurs.dart';
 import 'package:bomoco/partnership_tabs/temoignages.dart';
 import 'package:flutter/material.dart';
