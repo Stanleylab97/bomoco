@@ -9,7 +9,6 @@ class Donateurs extends StatefulWidget {
 }
 
 class _DonateursState extends State<Donateurs> {
-
   @override
   Widget build(BuildContext context) {
     return Column(
@@ -50,19 +49,35 @@ class _DonateursState extends State<Donateurs> {
                       itemBuilder: (context, index) {
                         DocumentSnapshot donateur = snapshot.data.docs[index];
 
-                        return ListTile(
-                            leading: ClipOval(
-                              child: Image.network(
-                                donateur['logo'],
-                                width: 70,
-                                height: 60,
-                                fit: BoxFit.cover,
+                        return Card(
+                          elevation: 1,
+                          child: Row(
+                            mainAxisAlignment: MainAxisAlignment.start,
+                            children: [
+                              Container(
+                                padding: EdgeInsets.all(8),
+                                width: 160,
+                                height: 120,
+                                child: ClipRRect(
+                                  borderRadius: BorderRadius.circular(100),
+                                  child: Image.network(donateur['logo']),
+                                ),
                               ),
-                            ),
-                            title: Text(donateur['nom']),
+                              Column(
+                                crossAxisAlignment: CrossAxisAlignment.start,
+                                children: [
+                                  Text(donateur['nom'],style: TextStyle(fontSize: 18, fontWeight: FontWeight.bold),),
+                                  Text(donateur['secteur']),
+                                  Text(donateur['localisation'])
+                                ],
+                              )
+                            ],
+                          ),
+                          /* title: Text(donateur['nom']),
                             subtitle: Text(donateur['secteur'] +
                                 "\n" +
-                                donateur['localisation']));
+                                donateur['localisation']) */
+                        );
                       },
                       padding: EdgeInsets.only(top: 20.0, bottom: 10.0),
                     );
