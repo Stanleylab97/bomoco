@@ -1,5 +1,6 @@
 import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:flutter/material.dart';
+import 'package:shimmer/shimmer.dart';
 
 class Donateurs extends StatefulWidget {
   FirebaseFirestore firestore = FirebaseFirestore.instance;
@@ -8,6 +9,7 @@ class Donateurs extends StatefulWidget {
 }
 
 class _DonateursState extends State<Donateurs> {
+
   @override
   Widget build(BuildContext context) {
     return Column(
@@ -24,7 +26,7 @@ class _DonateursState extends State<Donateurs> {
                       left: MediaQuery.of(context).size.width * .05),
                   width: MediaQuery.of(context).size.width * .9,
                   child: Text(
-                    "Donations",
+                    "Donateurs",
                     style: TextStyle(fontSize: 22, fontWeight: FontWeight.bold),
                   )),
               Divider(
@@ -36,7 +38,11 @@ class _DonateursState extends State<Donateurs> {
         ),
         Expanded(
             child: StreamBuilder<QuerySnapshot>(
-                stream: widget.firestore.collection("donateurs").snapshots(),
+                stream: widget.firestore
+                    .collection("partnership")
+                    .doc("various")
+                    .collection("givers")
+                    .snapshots(),
                 builder: (context, snapshot) {
                   if (snapshot.hasData) {
                     return ListView.builder(
@@ -45,12 +51,18 @@ class _DonateursState extends State<Donateurs> {
                         DocumentSnapshot donateur = snapshot.data.docs[index];
 
                         return ListTile(
-                            leading: CircleAvatar(
-                               radius:30.0 ,
-                              backgroundImage: NetworkImage(donateur['logo']),
+                            leading: ClipOval(
+                              child: Image.network(
+                                donateur['logo'],
+                                width: 70,
+                                height: 60,
+                                fit: BoxFit.cover,
+                              ),
                             ),
                             title: Text(donateur['nom']),
-                            subtitle: Text(donateur['secteur']+"\n"+donateur['localisation']));
+                            subtitle: Text(donateur['secteur'] +
+                                "\n" +
+                                donateur['localisation']));
                       },
                       padding: EdgeInsets.only(top: 20.0, bottom: 10.0),
                     );

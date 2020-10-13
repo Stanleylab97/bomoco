@@ -27,6 +27,8 @@ dependencies:
   carousel_slider: ^2.3.1
   cloud_firestore: ^0.14.1+2
   firebase_core: ^0.5.0
+  shimmer: ^1.1.2
+  circular_profile_avatar: ^1.0.7
 
 
   # The following adds the Cupertino Icons font to your application.

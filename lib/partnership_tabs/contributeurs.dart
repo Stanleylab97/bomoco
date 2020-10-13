@@ -36,7 +36,7 @@ class _ContributeursState extends State<Contributeurs> {
         ),
         Expanded(
             child: StreamBuilder<QuerySnapshot>(
-                stream: widget.firestore.collection("contributeurs").snapshots(),
+                stream: widget.firestore.collection("partnership").doc("various").collection("contributors").snapshots(),
                 builder: (context, snapshot) {
                   if (snapshot.hasData) {
                     return ListView.builder(
@@ -45,9 +45,13 @@ class _ContributeursState extends State<Contributeurs> {
                         DocumentSnapshot contributeur = snapshot.data.docs[index];
 
                         return ListTile(
-                            leading: CircleAvatar(
-                               
-                              backgroundImage: NetworkImage(contributeur['logo']),
+                            leading: ClipOval(
+                              child: Image.network(
+                                contributeur['logo'],
+                                width: 60,
+                                height: 60,
+                                fit: BoxFit.cover,
+                              ),
                             ),
                             title: Text(contributeur['nom']),
                             subtitle: Text(contributeur['secteur']+"\n"+contributeur['localisation']));

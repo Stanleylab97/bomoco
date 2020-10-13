@@ -40,7 +40,7 @@ class _TemoignagesState extends State<Temoignages> {
         ),
         Expanded(
             child: StreamBuilder<QuerySnapshot>(
-                stream: widget.firestore.collection("testimonials").snapshots(),
+                stream: widget.firestore.collection("partnership").doc("various").collection("testimonials").snapshots(),
                 builder: (context, snapshot) {
                   if (snapshot.hasData) {
                     return ListView.builder(

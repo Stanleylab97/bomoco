@@ -36,7 +36,7 @@ class _OperateursState extends State<Operateurs> {
         ),
         Expanded(
             child: StreamBuilder<QuerySnapshot>(
-                stream: widget.firestore.collection("operateurs").snapshots(),
+                stream: widget.firestore.collection("partnership").doc("various").collection("operators").snapshots(),
                 builder: (context, snapshot) {
                   if (snapshot.hasData) {
                     return ListView.builder(
