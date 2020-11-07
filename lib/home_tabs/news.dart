@@ -1,125 +1,59 @@
-import 'package:carousel_slider/carousel_slider.dart';
+import 'package:bomoco/config/constants.dart';
+import 'package:bomoco/models/article.dart';
+import 'package:bomoco/widgets/primary_card.dart';
+import 'package:bomoco/widgets/secondary_card.dart';
+import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:flutter/material.dart';
 import 'package:bomoco/home_tabs/more/news_details.dart';
 
+import 'read_news_view.dart';
+
 class News extends StatefulWidget {
+  FirebaseFirestore firestore = FirebaseFirestore.instance;
   @override
   _NewsState createState() => _NewsState();
 }
 
 class _NewsState extends State<News> {
+  
   @override
   Widget build(BuildContext context) {
-     return  ListView(
-      children: <Widget>[
-        SizedBox(height: 15.0),
-        CarouselSlider(
-        options: CarouselOptions(
-          height: 200.0,
-          enlargeCenterPage: true,
-          autoPlay: true,
-          aspectRatio: 16 / 9,
-          autoPlayCurve: Curves.fastOutSlowIn,
-          enableInfiniteScroll: true,
-          autoPlayAnimationDuration: Duration(milliseconds: 800),
-          viewportFraction: 0.8,
-        ),
-          items: [
-            ItemCaroussel('assets/images/sld1.jpeg', 'Lorem Ipsum is simply dummy text use for printing and type script'),
-            ItemCaroussel('assets/images/sld2.jpeg', 'Lorem Ipsum is simply dummy text use for printing and type script'),
-            ItemCaroussel('assets/images/sld3.jpeg', 'Lorem Ipsum is simply dummy text use for printing and type script'),
-            /* Container(
-              margin: EdgeInsets.all(5.0),
-              decoration: BoxDecoration(
-                borderRadius: BorderRadius.circular(10.0),
-                image: DecorationImage(
-                  image: AssetImage('assets/images/sld1.jpeg'),
-                  fit: BoxFit.cover,
-                ),
-              ),
-              child: Column(
-                mainAxisAlignment: MainAxisAlignment.end,
-                crossAxisAlignment: CrossAxisAlignment.center,
-                children: <Widget>[
-                  Padding(
-                    padding: const EdgeInsets.all(15.0),
-                    child: Text(
-                      'Lorem Ipsum is simply dummy text use for printing and type script',
-                      style: TextStyle(
-                        color: Colors.white,
-                        fontWeight: FontWeight.bold,
-                        fontSize: 14.0,
-                      ),
-                      textAlign: TextAlign.center,
-                    ),
+    Size size=MediaQuery.of(context).size;
+    //FirebaseServices firebaseServices = FirebaseServices();
+    /* return SafeArea(
+      child: Expanded(
+        child: Column(
+          children: [
+            ListView(
+              children: <Widget>[
+                SizedBox(height: 15.0),
+                CarouselSlider(
+                  options: CarouselOptions(
+                    height: 200.0,
+                    enlargeCenterPage: true,
+                    autoPlay: true,
+                    aspectRatio: 16 / 9,
+                    autoPlayCurve: Curves.fastOutSlowIn,
+                    enableInfiniteScroll: true,
+                    autoPlayAnimationDuration: Duration(milliseconds: 800),
+                    viewportFraction: 0.8,
                   ),
-                ],
-              ),
+                  items: [
+                    ItemCaroussel('assets/images/sld1.jpeg',
+                        'Lorem Ipsum is simply dummy text use for printing and type script'),
+                    ItemCaroussel('assets/images/sld2.jpeg',
+                        'Lorem Ipsum is simply dummy text use for printing and type script'),
+                    ItemCaroussel('assets/images/sld3.jpeg',
+                        'Lorem Ipsum is simply dummy text use for printing and type script'),
+                  ],
+                ),
+              ],
             ),
-            Container(
-              margin: EdgeInsets.all(5.0),
-              decoration: BoxDecoration(
-                borderRadius: BorderRadius.circular(10.0),
-                image: DecorationImage(
-                  image: AssetImage('assets/images/sld2.jpeg'),
-                  fit: BoxFit.cover,
-                ),
-              ),
-              child: Column(
-                mainAxisAlignment: MainAxisAlignment.end,
-                crossAxisAlignment: CrossAxisAlignment.center,
-                children: <Widget>[
-                  Padding(
-                    padding: const EdgeInsets.all(15.0),
-                    child: Text(
-                      'Lorem Ipsum is simply dummy text use for printing and type script',
-                      style: TextStyle(
-                        color: Colors.white,
-                        fontSize: 14.0,
-                        fontWeight: FontWeight.bold,
-                      ),
-                      textAlign: TextAlign.center,
-                    ),
-                  ),
-                ],
-              ),
-            ),
-            Container(
-              margin: EdgeInsets.all(5.0),
-              decoration: BoxDecoration(
-                borderRadius: BorderRadius.circular(10.0),
-                image: DecorationImage(
-                  image: AssetImage('assets/images/sld3.jpeg'),
-                  fit: BoxFit.cover,
-                ),
-              ),
-              child: Column(
-                mainAxisAlignment: MainAxisAlignment.end,
-                crossAxisAlignment: CrossAxisAlignment.start,
-                children: <Widget>[
-                  
-                  Padding(
-                    padding: const EdgeInsets.all(15.0),
-                    child: Text(
-                      'Lorem Ipsum is simply dummy text use for printing and type script',
-                      style: TextStyle(
-                        color: Colors.white,
-                        fontWeight: FontWeight.bold,
-                        fontSize: 15.0,
-                      ),
-                      textAlign: TextAlign.center,
-                    ),
-                  ),
-                ],
-              ),
-            ), */
           ],
         ),
-      ],
+      ),
     );
   }
-
-
 }
 
 class ItemCaroussel extends StatelessWidget {
@@ -155,6 +89,123 @@ class ItemCaroussel extends StatelessWidget {
               textAlign: TextAlign.center,
             ),
           ),
+        ],
+      ),
+    ); */
+    return Container(
+      child: ListView(
+        children: [
+          Container(
+            width: double.infinity,
+            height:size.height * .36,
+            padding: EdgeInsets.only(left: 18.0),
+            child: ListView.builder(
+              itemCount: popularList.length,
+              scrollDirection: Axis.horizontal,
+              shrinkWrap: true,
+              itemBuilder: (context, index) {
+                var news = popularList[index];
+                return InkWell(
+                  onTap: () {
+                    Navigator.push(
+                      context,
+                      MaterialPageRoute(
+                        builder: (context) => ReadNewsView(news: news),
+                      ),
+                    );
+                  },
+                  child: Container(
+                    margin: EdgeInsets.only(right: 12.0),
+                    child: PrimaryCard(news: news),
+                  ),
+                );
+              },
+            ),
+          ),
+          SizedBox(height: 25.0),
+          Align(
+            alignment: Alignment.topLeft,
+            child: Padding(
+              padding: EdgeInsets.only(left: 19.0),
+              child: Text("FIL D'ACTUALITE", style: kNonActiveTabStyle),
+            ),
+          ),
+           ListView.builder(
+            itemCount: popularList.length,
+            scrollDirection: Axis.vertical,
+            shrinkWrap: true,
+            physics: ScrollPhysics(),
+            itemBuilder: (context, index) {
+              var recent = popularList[index];
+              return InkWell(
+                onTap: () {
+                  Navigator.push(
+                    context,
+                    MaterialPageRoute(
+                      builder: (context) => ReadNewsView(news: recent),
+                    ),
+                  );
+                },
+                child: Container(
+                  width: double.infinity,
+                  height: 135.0,
+                  margin: EdgeInsets.symmetric(horizontal: 18.0, vertical: 8.0),
+                  child: SecondaryCard(news: recent),
+                ),
+              );
+            },
+          ) 
+          /* Expanded(
+                child: StreamBuilder<QuerySnapshot>(
+                    stream: widget.firestore
+                        .collection("informations")
+                        .doc("various")
+                        .collection("news")
+                        .snapshots(),
+                    builder: (context, snapshot) {
+                      if (snapshot.hasData) {
+                        print(snapshot.data);
+                        return ListView.builder(
+                          itemCount: snapshot.data.docs.length,
+                          itemBuilder: (context, index) {
+                            DocumentSnapshot info = snapshot.data.docs[index];
+                            print(info);
+                            var recent = Article(
+                                author: info['author'],
+                                content: info['content'],
+                                category: info['category'],
+                                publishedAt: info['publishedAt'],
+                                image: info['image'],
+                                seen: info['seen'],
+                                subtitle: info['subtitle'],
+                                title: info['title']);
+
+                            return InkWell(
+                              onTap: () {
+                                Navigator.push(
+                                  context,
+                                  MaterialPageRoute(
+                                    builder: (context) =>
+                                        ReadNewsView(news: recent),
+                                  ),
+                                );
+                              },
+                              child: Container(
+                                width: double.infinity,
+                                height: 135.0,
+                                margin: EdgeInsets.symmetric(
+                                    horizontal: 18.0, vertical: 8.0),
+                                child: SecondaryCard(news: recent),
+                              ),
+                            );
+                          },
+                          padding: EdgeInsets.only(top: 20.0, bottom: 10.0),
+                        );
+                      } else {
+                        return Center(child: CircularProgressIndicator());
+                      }
+                    })), */
+          
         ],
       ),
     );

@@ -6,12 +6,15 @@ import 'package:bomoco/home_tabs/more/news_details.dart';
 import 'package:bomoco/home_tabs/more/opportunity_details.dart';
 import 'package:bomoco/store_tabs/more/bien_details.dart';
 import 'package:bomoco/store_tabs/more/service_details.dart';
+import 'package:firebase_core/firebase_core.dart';
 import 'package:flutter/material.dart';
 
 import 'BottomNavBar/home.dart';
 import 'account_tabs/register.dart';
 
-void main() {
+Future<void> main() async {
+  WidgetsFlutterBinding.ensureInitialized();
+  await Firebase.initializeApp();
   runApp(MyApp());
 }
 
@@ -23,22 +26,20 @@ class MyApp extends StatelessWidget {
       title: 'Flutter Demo',
       debugShowCheckedModeBanner: false,
       routes: {
-        Login.routeName: (context)=>Login(),
-        Register.routeName:(context)=>Register(),
-        NewsDetails.routeName:(context)=>NewsDetails(),
-        AffaireDetails.routeName:(context)=>AffaireDetails(),
-        EmploiDetails.routeName:(context)=>EmploiDetails(),
-        OpportunityDetails.routeName:(context)=>OpportunityDetails(),
-        DetailsBien.routeName:(context)=>DetailsBien(),
-        ServiceDetails.routeName:(context)=>ServiceDetails(),
+        Login.routeName: (context) => Login(),
+        Register.routeName: (context) => Register(),
+        NewsDetails.routeName: (context) => NewsDetails(),
+        AffaireDetails.routeName: (context) => AffaireDetails(),
+        EmploiDetails.routeName: (context) => EmploiDetails(),
+        OpportunityDetails.routeName: (context) => OpportunityDetails(),
+        DetailsBien.routeName: (context) => DetailsBien(),
+        ServiceDetails.routeName: (context) => ServiceDetails(),
       },
       theme: ThemeData(
         primarySwatch: Colors.blue,
         visualDensity: VisualDensity.adaptivePlatformDensity,
       ),
       home: Racine(),
-      
     );
   }
 }
-

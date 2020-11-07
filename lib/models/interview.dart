@@ -1,5 +1,5 @@
 class Interview {
-  String title, details, video;
+  String desc, imageUrl, videoUrl;
  
-  Interview(this.title, this.details, this.video);
+  Interview({this.imageUrl, this.videoUrl, this.desc});
 }

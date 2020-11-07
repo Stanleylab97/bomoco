@@ -28,7 +28,15 @@ dependencies:
   cloud_firestore: ^0.14.1+2
   firebase_core: ^0.5.0
   shimmer: ^1.1.2
+  google_fonts: ^1.1.0
+  flutter_svg: ^0.17.4
   circular_profile_avatar: ^1.0.7
+  firebase_auth: ^0.18.1+2
+  chewie: ^0.9.10
+  video_player: ^0.10.9
+  cached_network_image: ^2.0.0
+  tuple: ^1.0.3
+  webview_flutter: ^0.3.18+1
 
 
   # The following adds the Cupertino Icons font to your application.

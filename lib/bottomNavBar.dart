@@ -1,9 +1,11 @@
 import 'package:bomoco/BottomNavBar/account.dart';
 import 'package:bomoco/BottomNavBar/home.dart';
 import 'package:bomoco/BottomNavBar/partners.dart';
+import 'package:bomoco/account_tabs/welcome.dart';
 import 'package:firebase_core/firebase_core.dart';
 import 'package:flutter/material.dart';
 import 'BottomNavBar/store.dart';
+import 'account_tabs/login.dart';
 
 class Racine extends StatefulWidget {
   @override
@@ -11,8 +13,10 @@ class Racine extends StatefulWidget {
 }
 
 class _RacineState extends State<Racine> {
+
+  
   int _currentIndex = 0;
-  final List<Widget> _children = [HomePage(), Account(), Partners(), Store()];
+  final List<Widget> _children = [HomePage(), Welcome(), Partners(), Store()];
   
   void onTabTapped(int index) {
     setState(() {
@@ -22,7 +26,6 @@ class _RacineState extends State<Racine> {
 
   @override
   Widget build(BuildContext context) {
-    Firebase.initializeApp();
     return Scaffold(
       body: _children[_currentIndex],
       bottomNavigationBar: BottomNavigationBar(

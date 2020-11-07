@@ -15,7 +15,7 @@ class Tele extends StatefulWidget {
 
 class _TeleState extends State<Tele> {
   List<Interview> interviews;
-  /* getListInterview() async {
+  getListInterview() async {
     QuerySnapshot snap = await FirebaseFirestore.instance
         .collection('informations')
         .doc('various')
@@ -33,9 +33,9 @@ class _TeleState extends State<Tele> {
     });
 
     return interviews;
-  } */
+  }
 
-  List<Tuple3> articles=  [
+  /*  [
     const Tuple3<String, String, String>(
       'http://himdeve.com/wp-content/uploads/2020/01/1_1_simple_webview_en_banner.jpg',
       'Flutter Tutorials – #1.1 – First App – Simple WebView',
@@ -96,7 +96,7 @@ class _TeleState extends State<Tele> {
       'Flutter Tutorial – #1.12 – VIDEO Player | Chewie',
       'https://himdeve.com/demo/himdeve_flutter_tutorial_video_player_1_12.mp4',
     ),
-  ]; 
+  ]; */
 
   @override
   Widget build(BuildContext context) {
@@ -108,7 +108,7 @@ class _TeleState extends State<Tele> {
   }
 
   SliverFixedExtentList _buildSliverContent() {
-    var tutorials =articles;
+    var tutorials = getListInterview();
     return SliverFixedExtentList(
       itemExtent: 110,
       delegate: SliverChildBuilderDelegate(

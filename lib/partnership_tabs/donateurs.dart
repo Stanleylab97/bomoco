@@ -1,6 +1,5 @@
 import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:flutter/material.dart';
-import 'package:shimmer/shimmer.dart';
 
 class Donateurs extends StatefulWidget {
   FirebaseFirestore firestore = FirebaseFirestore.instance;
