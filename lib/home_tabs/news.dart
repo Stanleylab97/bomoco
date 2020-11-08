@@ -17,10 +17,9 @@ class News extends StatefulWidget {
 }
 
 class _NewsState extends State<News> {
-  
   @override
   Widget build(BuildContext context) {
-    Size size=MediaQuery.of(context).size;
+    Size size = MediaQuery.of(context).size;
     //FirebaseServices firebaseServices = FirebaseServices();
     /* return SafeArea(
       child: Expanded(
@@ -99,7 +98,7 @@ class ItemCaroussel extends StatelessWidget {
         children: [
           Container(
             width: double.infinity,
-            height:size.height * .36,
+            height: size.height * .36,
             padding: EdgeInsets.only(left: 18.0),
             child: ListView.builder(
               itemCount: popularList.length,
@@ -157,63 +156,63 @@ class ItemCaroussel extends StatelessWidget {
               );
             },
           )  */
-         Container(
-           height: size.height *  .5,
-                child: StreamBuilder<QuerySnapshot>(
-                    stream: widget.firestore
-                        .collection("informations")
-                        .doc("various")
-                        .collection("news")
-                        .snapshots(),
-                    builder: (context, snapshot) {
-                      if (snapshot.hasData) {
-                        print(snapshot.data);
-                        return ListView.builder(
-                          itemCount: snapshot.data.docs.length,
-                          itemBuilder: (context, index) {
-                            DocumentSnapshot info = snapshot.data.docs[index];
-                            print(info);
-                            var recent = Article(
-                                author: info['author'],
-                                content: info['content'],
-                                category: info['category'],
-                                publishedAt: Shared.readTimestamp(info['publishedAt']),
-                                image: info['image'],
-                                seen: NumberFormat.compact().format(info['seen']).toString(),
-                                subtitle: info['subtitle'],
-                                title: info['title']);
+          SingleChildScrollView(
+              child: Container(
+                  height: size.height * .5,
+                  child: StreamBuilder<QuerySnapshot>(
+                      stream: widget.firestore
+                          .collection("informations")
+                          .doc("various")
+                          .collection("news")
+                          .snapshots(),
+                      builder: (context, snapshot) {
+                        if (snapshot.hasData) {
+                          print(snapshot.data);
+                          return ListView.builder(
+                            itemCount: snapshot.data.docs.length,
+                            itemBuilder: (context, index) {
+                              DocumentSnapshot info = snapshot.data.docs[index];
+                              print(info);
+                              var recent = Article(
+                                  author: info['author'],
+                                  content: info['content'],
+                                  category: info['category'],
+                                  publishedAt:
+                                      Shared.readTimestamp(info['publishedAt']),
+                                  image: info['image'],
+                                  seen: NumberFormat.compact()
+                                      .format(info['seen'])
+                                      .toString(),
+                                  subtitle: info['subtitle'],
+                                  title: info['title']);
 
-                            return InkWell(
-                              onTap: () {
-                                Navigator.push(
-                                  context,
-                                  MaterialPageRoute(
-                                    builder: (context) =>
-                                        ReadNewsView(news: recent),
-                                  ),
-                                );
-                              },
-                              child: Container(
-                                width: double.infinity,
-                                height: 135.0,
-                                margin: EdgeInsets.symmetric(
-                                    horizontal: 18.0, vertical: 8.0),
-                                child: SecondaryCard(news: recent),
-                              ),
-                            );
-                          },
-                          padding: EdgeInsets.only(top: 20.0, bottom: 10.0),
-                        );
-                      } else {
-                        return Center(child: CircularProgressIndicator());
-                      }
-                    })), 
-          
+                              return InkWell(
+                                onTap: () {
+                                  Navigator.push(
+                                    context,
+                                    MaterialPageRoute(
+                                      builder: (context) =>
+                                          ReadNewsView(news: recent),
+                                    ),
+                                  );
+                                },
+                                child: Container(
+                                  width: double.infinity,
+                                  height: size.height * 0.16,
+                                  margin: EdgeInsets.symmetric(
+                                      horizontal: 18.0, vertical: 8.0),
+                                  child: SecondaryCard(news: recent),
+                                ),
+                              );
+                            },
+                            padding: EdgeInsets.only(top: 20.0, bottom: 10.0),
+                          );
+                        } else {
+                          return Center(child: CircularProgressIndicator());
+                        }
+                      }))),
         ],
       ),
     );
   }
-
-
-
 }
