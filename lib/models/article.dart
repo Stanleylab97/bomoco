@@ -3,7 +3,6 @@ class Article {
   String subtitle;
   String content;
   String category;
-  String time;
   String author;
   String seen;
   String favorite;

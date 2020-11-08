@@ -1,10 +1,12 @@
 import 'package:bomoco/config/constants.dart';
+import 'package:bomoco/config/shared.dart';
 import 'package:bomoco/models/article.dart';
 import 'package:bomoco/widgets/primary_card.dart';
 import 'package:bomoco/widgets/secondary_card.dart';
 import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:flutter/material.dart';
 import 'package:bomoco/home_tabs/more/news_details.dart';
+import 'package:intl/intl.dart';
 
 import 'read_news_view.dart';
 
@@ -122,7 +124,7 @@ class ItemCaroussel extends StatelessWidget {
               },
             ),
           ),
-          SizedBox(height: 25.0),
+          SizedBox(height: size.height * .015),
           Align(
             alignment: Alignment.topLeft,
             child: Padding(
@@ -130,7 +132,7 @@ class ItemCaroussel extends StatelessWidget {
               child: Text("FIL D'ACTUALITE", style: kNonActiveTabStyle),
             ),
           ),
-           ListView.builder(
+/*            ListView.builder(
             itemCount: popularList.length,
             scrollDirection: Axis.vertical,
             shrinkWrap: true,
@@ -154,8 +156,9 @@ class ItemCaroussel extends StatelessWidget {
                 ),
               );
             },
-          ) 
-          /* Expanded(
+          )  */
+         Container(
+           height: size.height *  .5,
                 child: StreamBuilder<QuerySnapshot>(
                     stream: widget.firestore
                         .collection("informations")
@@ -174,9 +177,9 @@ class ItemCaroussel extends StatelessWidget {
                                 author: info['author'],
                                 content: info['content'],
                                 category: info['category'],
-                                publishedAt: info['publishedAt'],
+                                publishedAt: Shared.readTimestamp(info['publishedAt']),
                                 image: info['image'],
-                                seen: info['seen'],
+                                seen: NumberFormat.compact().format(info['seen']).toString(),
                                 subtitle: info['subtitle'],
                                 title: info['title']);
 
@@ -204,10 +207,13 @@ class ItemCaroussel extends StatelessWidget {
                       } else {
                         return Center(child: CircularProgressIndicator());
                       }
-                    })), */
+                    })), 
           
         ],
       ),
     );
   }
+
+
+
 }

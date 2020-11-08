@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:google_fonts/google_fonts.dart';
+import 'package:intl/intl.dart';
 
 const kGrey1 = Color(0xFF9F9F9F);
 const kGrey2 = Color(0xFF6D6D6D);
@@ -19,12 +20,11 @@ var kActiveTabStyle = GoogleFonts.roboto(
 );
 
 var kCategoryTitle = GoogleFonts.roboto(
-  textStyle: TextStyle(
-    fontSize: 14.0,
-    color: kGrey2,
-    fontWeight: FontWeight.bold,
-  )
-);
+    textStyle: TextStyle(
+  fontSize: 14.0,
+  color: kGrey2,
+  fontWeight: FontWeight.bold,
+));
 
 var kDetailContent = GoogleFonts.roboto(
   textStyle: TextStyle(
@@ -46,3 +46,5 @@ var descriptionStyle = GoogleFonts.roboto(
   fontSize: 15.0,
   height: 2.0,
 ));
+
+
