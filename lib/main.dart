@@ -4,11 +4,9 @@ import 'package:bomoco/home_tabs/more/affaire_details.dart';
 import 'package:bomoco/home_tabs/more/emploi_details.dart';
 import 'package:bomoco/home_tabs/more/news_details.dart';
 import 'package:bomoco/home_tabs/more/opportunity_details.dart';
-import 'package:bomoco/store_tabs/more/bien_details.dart';
-import 'package:bomoco/store_tabs/more/service_details.dart';
 import 'package:firebase_core/firebase_core.dart';
 import 'package:flutter/material.dart';
-
+import 'BottomNavBar/account.dart';
 import 'BottomNavBar/home.dart';
 import 'account_tabs/register.dart';
 
@@ -28,12 +26,10 @@ class MyApp extends StatelessWidget {
       routes: {
         Login.routeName: (context) => Login(),
         Register.routeName: (context) => Register(),
-        NewsDetails.routeName: (context) => NewsDetails(),
+        Account.routeName: (context) => Account(),
         AffaireDetails.routeName: (context) => AffaireDetails(),
         EmploiDetails.routeName: (context) => EmploiDetails(),
         OpportunityDetails.routeName: (context) => OpportunityDetails(),
-        DetailsBien.routeName: (context) => DetailsBien(),
-        ServiceDetails.routeName: (context) => ServiceDetails(),
       },
       theme: ThemeData(
         primarySwatch: Colors.blue,

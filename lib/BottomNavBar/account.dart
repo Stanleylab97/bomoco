@@ -6,6 +6,7 @@ import 'package:bomoco/account_tabs/profile.dart';
 import 'package:flutter/material.dart';
 
 class Account extends StatefulWidget {
+  static const routeName = "account";
   @override
   _AccountState createState() => _AccountState();
 }
@@ -22,11 +23,7 @@ class _AccountState extends State<Account> {
             backgroundColor: Colors.orange,
             centerTitle: true,
             title: Text("Bomoco"),
-            actions: [
-              IconButton(
-                icon: Icon(Icons.shopping_cart),
-                onPressed: (){})
-              ],
+            
             bottom: TabBar(
               
               isScrollable: true,

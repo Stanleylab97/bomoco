@@ -1,3 +1,4 @@
+import 'package:bomoco/BottomNavBar/account.dart';
 import 'package:bomoco/config/authentication.dart';
 import 'package:flutter/material.dart';
 
@@ -45,8 +46,12 @@ class _LoginState extends State<Login> {
       String userId = "";
       try {
         if (_formMode == FormMode.LOGIN) {
-          userId = await widget.auth.signIn(_email, _password);
-          print('Signed in: $userId');
+          /* userId = await widget.auth.signIn(_email, _password);
+          print('Signed in: $userId'); */
+          Navigator.pushNamed(context, Account.routeName,
+          arguments: ScreenArguments(
+        'Extract Arguments Screen',
+      ));
         } else {
           userId = await widget.auth.signUp(_email, _password);
           widget.auth.sendEmailVerification();
@@ -57,10 +62,11 @@ class _LoginState extends State<Login> {
           _isLoading = false;
         });
 
-        if (userId.length > 0 && userId != null && _formMode == FormMode.LOGIN) {
+        if (userId.length > 0 &&
+            userId != null &&
+            _formMode == FormMode.LOGIN) {
           widget.onSignedIn();
         }
-
       } catch (e) {
         print('Error: $e');
         setState(() {
@@ -73,7 +79,6 @@ class _LoginState extends State<Login> {
       }
     }
   }
-
 
   @override
   void initState() {
@@ -102,20 +107,22 @@ class _LoginState extends State<Login> {
   Widget build(BuildContext context) {
     _isIos = Theme.of(context).platform == TargetPlatform.iOS;
     return new Scaffold(
-       
         body: Stack(
-          children: <Widget>[
-            _showBody(),
-            _showCircularProgress(),
-          ],
-        ));
+      children: <Widget>[
+        _showBody(),
+        _showCircularProgress(),
+      ],
+    ));
   }
 
-  Widget _showCircularProgress(){
+  Widget _showCircularProgress() {
     if (_isLoading) {
       return Center(child: CircularProgressIndicator());
-    } return Container(height: 0.0, width: 0.0,);
-
+    }
+    return Container(
+      height: 0.0,
+      width: 0.0,
+    );
   }
 
   void _showVerifyEmailSentDialog() {
@@ -125,7 +132,8 @@ class _LoginState extends State<Login> {
         // return object of type Dialog
         return AlertDialog(
           title: new Text("Verify your account"),
-          content: new Text("Link to verify account has been sent to your email"),
+          content:
+              new Text("Link to verify account has been sent to your email"),
           actions: <Widget>[
             new FlatButton(
               child: new Text("Dismiss"),
@@ -140,7 +148,7 @@ class _LoginState extends State<Login> {
     );
   }
 
-  Widget _showBody(){
+  Widget _showBody() {
     return new Container(
         padding: EdgeInsets.all(16.0),
         child: new Form(
@@ -228,8 +236,6 @@ class _LoginState extends State<Login> {
     );
   }
 
- 
-
   Widget _showSecondaryButton() {
     return new FlatButton(
       child: _formMode == FormMode.LOGIN
@@ -251,7 +257,8 @@ class _LoginState extends State<Login> {
           height: 40.0,
           child: new RaisedButton(
             elevation: 5.0,
-            shape: new RoundedRectangleBorder(borderRadius: new BorderRadius.circular(30.0)),
+            shape: new RoundedRectangleBorder(
+                borderRadius: new BorderRadius.circular(30.0)),
             color: Colors.orange,
             child: _formMode == FormMode.LOGIN
                 ? new Text('Login',
@@ -261,6 +268,13 @@ class _LoginState extends State<Login> {
             onPressed: _validateAndSubmit,
           ),
         ));
-  }
-  
+  }  
+}
+
+
+class ScreenArguments {
+  final String title;
+  //final String message;
+
+  ScreenArguments(this.title);
 }
