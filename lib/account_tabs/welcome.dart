@@ -1,4 +1,5 @@
 import 'package:bomoco/account_tabs/login.dart';
+import 'package:bomoco/account_tabs/register.dart';
 import 'package:flutter/material.dart';
 
 class Welcome extends StatefulWidget {
@@ -41,7 +42,9 @@ class _WelcomeState extends State<Welcome> {
               ),
               Padding(padding: EdgeInsets.only(top: 20, bottom: 10)),
               FlatButton(
-                onPressed: () {},
+                onPressed: () {
+                  Navigator.pushNamed(context, Register.routeName);
+                },
                 child: Text(
                   "S'inscrire",
                   style: TextStyle(fontSize: 18.0, fontWeight: FontWeight.bold),

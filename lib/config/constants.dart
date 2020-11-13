@@ -35,7 +35,7 @@ var kDetailContent = GoogleFonts.roboto(
 
 var kTitleCard = GoogleFonts.roboto(
   textStyle: TextStyle(
-    fontSize: 18.0,
+    fontSize: 15.0,
     color: kBlack,
     fontWeight: FontWeight.bold,
   ),

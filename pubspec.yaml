@@ -39,11 +39,18 @@ dependencies:
   tuple: ^1.0.3
   webview_flutter: ^0.3.18+1
   intl: ^0.16.1
+  kkiapay_flutter_sdk: ^1.0.4
+  splashscreen: ^1.3.3
 
 
   # The following adds the Cupertino Icons font to your application.
   # Use with the CupertinoIcons class for iOS style icons.
   cupertino_icons: ^0.1.3
+
+flutter_icons:
+  android: "ic_launcher_bomoco"
+  ios: true
+  image_path: "assets/icons/logo.png"
 
 dev_dependencies:
   flutter_test:

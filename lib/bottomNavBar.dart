@@ -1,11 +1,9 @@
-import 'package:bomoco/BottomNavBar/account.dart';
 import 'package:bomoco/BottomNavBar/home.dart';
 import 'package:bomoco/BottomNavBar/partners.dart';
 import 'package:bomoco/account_tabs/welcome.dart';
 import 'package:bubble_bottom_bar/bubble_bottom_bar.dart';
 import 'package:flutter/material.dart';
 import 'package:font_awesome_flutter/font_awesome_flutter.dart';
-import 'account_tabs/login.dart';
 
 class Racine extends StatefulWidget {
   @override
@@ -13,46 +11,7 @@ class Racine extends StatefulWidget {
 }
 
 class _RacineState extends State<Racine> {
-  /* 
-  int _currentIndex = 0;
-  final List<Widget> _children = [HomePage(), Welcome(), Partners(), Store()];
-  
-  void onTabTapped(int index) {
-    setState(() {
-      _currentIndex = index;
-    });
-  }
 
-  @override
-  Widget build(BuildContext context) {
-    return Scaffold(
-      body: _children[_currentIndex],
-      bottomNavigationBar: BottomNavigationBar(
-        onTap: onTabTapped, // new
-        currentIndex: _currentIndex,
-        items: [
-          BottomNavigationBarItem(
-            icon: new Icon(
-              Icons.home,
-              color: Colors.orange,
-            ),
-            title: new Text('Accueil', style: TextStyle(color: Colors.orange)),
-          ),
-          BottomNavigationBarItem(
-            icon: new Icon(Icons.person, color: Colors.orange),
-            title: new Text('Compte', style: TextStyle(color: Colors.orange)),
-          ),
-          BottomNavigationBarItem(
-              icon: Icon(Icons.group, color: Colors.orange),
-              title:
-                  Text('Partenaires', style: TextStyle(color: Colors.orange))),
-          BottomNavigationBarItem(
-              icon: Icon(Icons.shopping_cart, color: Colors.orange),
-              title: Text('Boutique', style: TextStyle(color: Colors.orange)))
-        ],
-      ),
-    );
-  } */
 
   int currentIndex = 1;
 
@@ -99,13 +58,30 @@ class _RacineState extends State<Racine> {
               ),
               activeIcon:
                   FaIcon(FontAwesomeIcons.newspaper, color: Colors.orange),
-              title: Text("Accueil")),
+              title: Text("Actualité")),
           BubbleBottomBarItem(
               backgroundColor: Colors.black87,
               icon: Container(
                 height: 24,
                 width: 24,
                 decoration: BoxDecoration(
+                  shape: BoxShape.circle,
+                  image: DecorationImage(
+                      image: AssetImage('assets/images/user.png')),
+                  boxShadow: [
+                    BoxShadow(
+                        color: Color(0x5c000000),
+                        offset: Offset(0, 1),
+                        blurRadius: 5)
+                  ],
+                ),
+              ),
+              activeIcon:
+                 Container(
+                height: 24,
+                width: 24,
+                decoration: BoxDecoration(
+                  border: Border.all(color: Colors.orange,width: 2),
                   shape: BoxShape.circle,
                   image: DecorationImage(
                       image: AssetImage('assets/images/user.png')),

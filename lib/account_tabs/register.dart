@@ -1,29 +1,13 @@
 import 'package:flutter/material.dart';
 
 class Register extends StatefulWidget {
-  static const routeName = "register";
+  static const routeName = "/register";
   @override
   _RegisterState createState() => _RegisterState();
 }
 
 class _RegisterState extends State<Register> {
- var _index = 0;
-
-  Widget _simpleStep() => Container(
-        color: Colors.red,
-        child: Stepper(
-          steps: [
-            Step(
-              title: Text("Start"),
-              content: Text("Before starting, we should create a page."),
-            ),
-            Step(
-              title: Text("Constructor"),
-              content: Text("Let's look at its construtor."),
-            ),
-          ],
-        ),
-      );
+  var _index = 0;
 
   Widget _steps() => Container(
         margin: EdgeInsets.only(top: 10),
@@ -53,20 +37,63 @@ class _RegisterState extends State<Register> {
 
   Widget _typeStep() => Container(
         margin: EdgeInsets.only(top: 10),
-        constraints: BoxConstraints.expand(height: 200),
-        color: Colors.red,
+        constraints: BoxConstraints.expand(height: 500),
+        color: Colors.grey,
         child: Stepper(
           type: StepperType.horizontal,
           steps: [
             Step(
-              title: Text("First"),
-              content: Text("This is our first example."),
+                title: Text("Identité"),
+                content: Column(
+                  children: [
+                    Text("Qui êtes-vous ?"),
+                    SizedBox(
+                      height: 20,
+                    ),
+                    TextField(
+                      obscureText: true,
+                      decoration: InputDecoration(
+                        border: OutlineInputBorder(),
+                        labelText: 'Password',
+                      )),
+                       SizedBox(
+                      height: 10,
+                    ),
+                      TextField(
+                      obscureText: true,
+                      decoration: InputDecoration(
+                        border: OutlineInputBorder(),
+                        labelText: 'Nom & prénoms / Dénomination',
+                      ),
+                    )
+                    
+                  ],
+                ),
+                isActive: true),
+            Step(
+              title: Text("Secteur"),
+              content: Text("Que faîtes-vous ?"),
             ),
             Step(
-              title: Text("Second"),
-              content: Text("This is our second example."),
-            ),
+              title: Text("Refs"),
+              content: Text("Réferences"),
+            )
           ],
+          currentStep: _index,
+          onStepTapped: (index) {
+            setState(() {
+              _index = index;
+            });
+          },
+          onStepCancel: () {
+            print("You are clicking the cancel button.");
+          },
+          onStepContinue: () {
+            setState(() {
+              _index = 1;
+            });
+            print("You are clicking the continue button.");
+          },
         ),
       );
 
@@ -145,17 +172,15 @@ class _RegisterState extends State<Register> {
   Widget build(BuildContext context) {
     return Scaffold(
         appBar: AppBar(
-          title: Text("PageName.STEPPER"),
+          title: Text("Formulaire d'inscription"),
         ),
         body: SingleChildScrollView(
           child: Column(
             children: <Widget>[
               //our code.
-              _simpleStep(),
-              _steps(),
+
               _typeStep(),
-              _tabStep(),
-              _builderStep(),
+
               SizedBox(height: 600)
             ],
           ),

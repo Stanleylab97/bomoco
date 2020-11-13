@@ -4,7 +4,7 @@ import 'package:flutter/material.dart';
 
 class Login extends StatefulWidget {
   Login({this.auth, this.onSignedIn});
-  static const routeName = "login";
+  static const routeName = "/login";
   final BaseAuth auth;
   final VoidCallback onSignedIn;
 

@@ -1,5 +1,6 @@
 class Event {
-  final String title, dates, image, suscribelink;
- 
-  Event(this.title, this.dates, this.image, this.suscribelink);
+  final String titre, localisation, affiche, link;
+  final List<DateTime> dates;
+
+  Event(this.titre, this.dates, this.localisation, this.affiche, this.link);
 }

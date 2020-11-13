@@ -1,5 +1,6 @@
 class Opportunity {
- final String title, description, image, contact;
+final String typeProject, location, eligibilite, grantSize, organisme;
+  final DateTime deadline;
 
-  Opportunity(this.title, this.description, this.image, this.contact);
+  Opportunity(this.organisme,this.typeProject, this.location, this.eligibilite, this.grantSize, this.deadline);
 }

@@ -10,8 +10,8 @@ class SecondaryCard extends StatelessWidget {
   Widget build(BuildContext context) {
     return Container(
       width: double.infinity,
-      height: MediaQuery.of(context).size.height * .158,
-      padding: EdgeInsets.symmetric(horizontal: 12.0, vertical: 8.0),
+      height: MediaQuery.of(context).size.height * .118,
+      padding: EdgeInsets.symmetric(horizontal: 10.0, vertical: 8.0),
       decoration: BoxDecoration(
         borderRadius: BorderRadius.circular(15.0),
         border: Border.all(color: kGrey3, width: 1.0),
@@ -57,7 +57,7 @@ class SecondaryCard extends StatelessWidget {
               ),
             ),
           ),
-           SizedBox(width: 12.0),
+          SizedBox(width: 12.0),
           Container(
             width: 100.0,
             height: 135.0,
@@ -69,7 +69,6 @@ class SecondaryCard extends StatelessWidget {
               ),
             ),
           ),
-         
         ],
       ),
     );

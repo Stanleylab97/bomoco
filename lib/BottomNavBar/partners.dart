@@ -20,11 +20,6 @@ class _PartnersState extends State<Partners> {
             backgroundColor: Colors.orange,
             centerTitle: true,
             title: Text("Bomoco"),
-            actions: [
-              IconButton(
-                icon: Icon(Icons.shopping_cart),
-                onPressed: (){})
-              ],
             bottom: TabBar(
               
               isScrollable: true,

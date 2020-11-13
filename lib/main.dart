@@ -2,12 +2,11 @@ import 'package:bomoco/account_tabs/login.dart';
 import 'package:bomoco/bottomNavBar.dart';
 import 'package:bomoco/home_tabs/more/affaire_details.dart';
 import 'package:bomoco/home_tabs/more/emploi_details.dart';
-import 'package:bomoco/home_tabs/more/news_details.dart';
 import 'package:bomoco/home_tabs/more/opportunity_details.dart';
 import 'package:firebase_core/firebase_core.dart';
 import 'package:flutter/material.dart';
+import 'package:splashscreen/splashscreen.dart';
 import 'BottomNavBar/account.dart';
-import 'BottomNavBar/home.dart';
 import 'account_tabs/register.dart';
 
 Future<void> main() async {
@@ -21,7 +20,6 @@ class MyApp extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return MaterialApp(
-      title: 'Flutter Demo',
       debugShowCheckedModeBanner: false,
       routes: {
         Login.routeName: (context) => Login(),
@@ -30,12 +28,39 @@ class MyApp extends StatelessWidget {
         AffaireDetails.routeName: (context) => AffaireDetails(),
         EmploiDetails.routeName: (context) => EmploiDetails(),
         OpportunityDetails.routeName: (context) => OpportunityDetails(),
+        DrivingLicence.routeName: (context) => DrivingLicence(),
       },
       theme: ThemeData(
         primarySwatch: Colors.blue,
         visualDensity: VisualDensity.adaptivePlatformDensity,
       ),
-      home: Racine(),
+      home: DrivingLicence(),
+    );
+  }
+}
+
+class DrivingLicence extends StatefulWidget {
+  static const routeName = "/launcher";
+  @override
+  _DrivingLicenceState createState() => new _DrivingLicenceState();
+}
+
+class _DrivingLicenceState extends State<DrivingLicence> {
+  
+  @override
+  Widget build(BuildContext context) {
+    return  SplashScreen(
+      seconds: 14,
+      
+      image: Image.asset(
+        "assets/images/logo.gif",
+        fit: BoxFit.fill,
+        width: 400, height: 300
+      ),
+      navigateAfterSeconds: Racine(),
+      backgroundColor: Colors.white,
+      photoSize: MediaQuery.of(context).size.height * 0.30,
+      loaderColor: Colors.orange,
     );
   }
 }
