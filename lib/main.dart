@@ -51,7 +51,6 @@ class _DrivingLicenceState extends State<DrivingLicence> {
   Widget build(BuildContext context) {
     return  SplashScreen(
       seconds: 14,
-      
       image: Image.asset(
         "assets/images/logo.gif",
         fit: BoxFit.fill,
